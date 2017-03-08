@@ -16,13 +16,13 @@ protocol LoadMoreDelegate {
     var noResultsTitle: String { get }
     
     var loadingMoreTitle: String { get }
-
+    
     
     func fetchDataFromWS(withOffset offset: Int, andLimit limit: Int, completionBlock completion: @escaping ([Any]?, Error?) -> Void)
 }
 
 class LoadMoreTableViewController: UITableViewController {
-
+    
     // MARK: - vars
     var heightAtIndexPath = [(Int, CGFloat)]()
     
@@ -50,9 +50,9 @@ class LoadMoreTableViewController: UITableViewController {
     
     var isViewAppearing = false {
         didSet {
-#if DEBUG
-            debugPrint("LoadMoreTableViewController.isViewAppearing = \(isViewAppearing)")
-#endif
+            #if DEBUG
+                debugPrint("LoadMoreTableViewController.isViewAppearing = \(isViewAppearing)")
+            #endif
         }
     }
     
@@ -99,6 +99,7 @@ class LoadMoreTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // TODO: create an delegate method and call it here!
         fatalError("a subclasse precisa fazer override deste método")
     }
     
@@ -114,9 +115,9 @@ class LoadMoreTableViewController: UITableViewController {
         
         
         if index >= indexToLoadMore && indexToLoadMore > 0 {
-#if DEBUG
-            debugPrint("LoadMoreTableViewController.willDisplayCell: indexToLoadMore=\(indexToLoadMore) index=\(index)")
-#endif
+            #if DEBUG
+                debugPrint("LoadMoreTableViewController.willDisplayCell: indexToLoadMore=\(indexToLoadMore) index=\(index)")
+            #endif
             self.loadMore()
         }
     }
@@ -132,7 +133,7 @@ class LoadMoreTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-
+    
     // MARK: - WS Methods
     func loadMore(_ clear: Bool = false, with refreshControl: UIRefreshControl? = nil) {
         self.loadMore(clear, with: refreshControl) {
@@ -181,7 +182,7 @@ class LoadMoreTableViewController: UITableViewController {
             }
         }
     }
-
+    
     func loadMore(_ clear: Bool = false, with refreshControl: UIRefreshControl? = nil, completionBlock completion: @escaping ([Any]?, Error?) -> Void) {
         if self.loadingMore == false {
             self.loadingMore = true
@@ -195,10 +196,10 @@ class LoadMoreTableViewController: UITableViewController {
             }
             
             offset += repetidos
-
-#if DEBUG
-        debugPrint("LoadMoreTableViewController.fetchDataFromWS(withOffset: \(offset), andLimit: \(limit))")
-#endif
+            
+            #if DEBUG
+                debugPrint("LoadMoreTableViewController.fetchDataFromWS(withOffset: \(offset), andLimit: \(limit))")
+            #endif
             
             self.fetchDataFromWS(withOffset: offset, andLimit: limit) {
                 newResults, error in
@@ -223,9 +224,9 @@ class LoadMoreTableViewController: UITableViewController {
     }
     
     func showFooterLoadingMore() {
-#if DEBUG
+        #if DEBUG
             debugPrint("LoadMoreTableViewController.showFooterLoadingMore()")
-#endif
+        #endif
         
         let footer = self.loadFooter()
         footer.state = .loading
@@ -236,7 +237,7 @@ class LoadMoreTableViewController: UITableViewController {
         #if DEBUG
             debugPrint("LoadMoreTableViewController.showFooterNoItems()")
         #endif
-
+        
         let footer = self.loadFooter()
         footer.state = .noMore
         self.tableView.tableFooterView = footer
@@ -246,7 +247,7 @@ class LoadMoreTableViewController: UITableViewController {
         #if DEBUG
             debugPrint("LoadMoreTableViewController.hideFooter()")
         #endif
-
+        
         self.tableView.tableFooterView = nil
     }
     
@@ -308,7 +309,8 @@ extension LoadMoreTableViewController: LoadMoreDelegate {
     }
     
     func fetchDataFromWS(withOffset offset: Int, andLimit limit: Int, completionBlock completion: @escaping ([Any]?, Error?) -> Void) {
-        fatalError("a subclasse precisa fazer override desta função")
+        // TODO: create an custom error
+        completion(nil, nil)
     }
     
 }
