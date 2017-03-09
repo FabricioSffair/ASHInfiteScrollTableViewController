@@ -21,7 +21,25 @@ protocol LoadMoreDelegate {
     func fetchDataFromWS(withOffset offset: Int, andLimit limit: Int, completionBlock completion: @escaping ([Any]?, Error?) -> Void)
 }
 
-class LoadMoreTableViewController: UITableViewController {
+class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    // MARK: - IBOutlets
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
+    }
+    
+    @IBOutlet weak var refreshControl: UIRefreshControl? {
+        didSet {
+            refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        }
+    }
+    
+    // MARK: - IBActions
+    @IBAction func refresh(_ sender: UIRefreshControl?) {
+        self.loadMore(true, with: sender)
+    }
     
     // MARK: - vars
     var heightAtIndexPath = [(Int, CGFloat)]()
