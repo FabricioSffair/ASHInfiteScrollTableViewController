@@ -17,10 +17,11 @@ protocol LoadMoreDelegate {
     
     var loadingMoreTitle: String { get }
     
-    
     func fetchDataFromWS(withOffset offset: Int, andLimit limit: Int, completionBlock completion: @escaping ([Any]?, Error?) -> Void)
 }
 
+
+@IBDesignable
 class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView? {
@@ -30,11 +31,7 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    @IBOutlet weak var refreshControl: UIRefreshControl? {
-        didSet {
-            refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        }
-    }
+    @IBOutlet weak var refreshControl: UIRefreshControl?
     
     // MARK: - IBActions
     @IBAction func refresh(_ sender: UIRefreshControl?) {
@@ -42,6 +39,8 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     // MARK: - vars
+    @IBInspectable var primaryColor: UIColor?
+    
     var heightAtIndexPath = [(Int, CGFloat)]()
     
     var loadingMore = false {
@@ -94,6 +93,8 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        createRefreshControl()
+        
         self.loadMore(true, with: nil)
     }
     
@@ -105,6 +106,21 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.isViewAppearing = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let primaryColor = self.primaryColor {
+            self.refreshControl?.tintColor = primaryColor
+        }
+    }
+    
+    // MARK: - Layout Methods
+    func createRefreshControl() {
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        self.tableView.addSubview(self.refreshControl!)
     }
     
     // MARK: - UITableViewDataSource
