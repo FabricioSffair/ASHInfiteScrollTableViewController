@@ -23,10 +23,10 @@ protocol LoadMoreDelegate {
 
 class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - IBOutlets
-    @IBOutlet weak var tableView: UITableView! {
+    @IBOutlet weak var tableView: UITableView? {
         didSet {
-            tableView.delegate = self
-            tableView.dataSource = self
+            tableView?.delegate = self
+            tableView?.dataSource = self
         }
     }
     
@@ -248,7 +248,7 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
         
         let footer = self.loadFooter()
         footer.state = .loading
-        self.tableView.tableFooterView = footer
+        self.tableView?.tableFooterView = footer
     }
     
     func showFooterNoItems() {
@@ -258,7 +258,7 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
         
         let footer = self.loadFooter()
         footer.state = .noMore
-        self.tableView.tableFooterView = footer
+        self.tableView?.tableFooterView = footer
     }
     
     func hideFooter() {
@@ -266,7 +266,7 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
             debugPrint("LoadMoreTableViewController.hideFooter()")
         #endif
         
-        self.tableView.tableFooterView = nil
+        self.tableView?.tableFooterView = nil
     }
     
     // MARK: - cache
