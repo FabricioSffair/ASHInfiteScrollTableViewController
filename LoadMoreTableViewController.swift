@@ -118,9 +118,11 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - Layout Methods
     func createRefreshControl() {
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        self.tableView?.addSubview(self.refreshControl!)
+        let rc = UIRefreshControl()
+        rc.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        self.tableView?.addSubview(rc)
+        
+        self.refreshControl = rc
     }
     
     // MARK: - UITableViewDataSource
