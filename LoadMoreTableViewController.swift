@@ -108,21 +108,21 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     // MARK: - UITableViewDataSource
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.records.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: create an delegate method and call it here!
         fatalError("a subclasse precisa fazer override deste método")
     }
     
     // MARK: - UITableViewDelegate
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         updateCachedSizeForHeight(row: indexPath.row, with: cell.frame.size.height)
         
         guard self.isViewAppearing && !self.loadingMore && self.hasMore else {
@@ -140,7 +140,7 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if let height = cachedHeightForRow(row: indexPath.row) {
             return height
         } else {
@@ -148,7 +148,7 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
