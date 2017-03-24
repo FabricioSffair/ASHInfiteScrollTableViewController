@@ -89,6 +89,15 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    var nroChamadas = 0 {
+        didSet {
+            #if DEBUG
+                debugPrint("LoadMoreTableViewController.nroChamadas = \(nroChamadas)")
+            #endif
+            
+        }
+    }
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,6 +191,7 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
                     records.append(contentsOf: newResults)
                     self.records = records
                     self.tableView?.reloadData()
+                    
                 } else {
                     self.tableView?.beginUpdates()
                     var indexes = [Int]()
@@ -195,13 +205,24 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
                     #endif
                     self.tableView?.insertRows(at: indexes.map { IndexPath(row: $0, section: 0)}, with: .automatic)
                     self.tableView?.endUpdates()
+                    
                 }
                 
                 self.hasMore = newResults.count != 0
-                let diff = (self.limit - newResults.count)
                 
-                if diff > 0 {
-                    self.repetidos += diff
+                if let posts = newResults as? [TresPosts] {
+                    let diff = (self.limit*self.nroChamadas) - posts.ungroup().count
+                    
+                    if diff > 0 {
+                        self.repetidos += diff
+                    }
+                    
+                } else {
+                    let diff = (self.limit - newResults.count)
+                    
+                    if diff > 0 {
+                        self.repetidos += diff
+                    }
                 }
                 
             } else {
@@ -227,8 +248,10 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
             
             if clear {
                 repetidos = 0
+                self.nroChamadas = 1
             } else {
                 offset = self.offset
+                self.nroChamadas += 1
             }
             
             offset += repetidos
