@@ -18,7 +18,6 @@ class LoadFooterView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var actIndicator: UIActivityIndicatorView!
     @IBOutlet weak var indicatorLabel: UILabel!
-    @IBOutlet weak var icon: UIImageView!
     
     var noMoreResultsTitle: String = "Não há itens"
     var loadingResultsTitle: String = "Carregando..."
