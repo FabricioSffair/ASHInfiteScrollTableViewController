@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="tmj-MM-ytC" customClass="LoadFooterView" customModule="Joinday" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="102"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="61x-Ls-07q">
+                    <rect key="frame" x="321" y="41" width="20" height="20"/>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jab-x8-78e">
+                    <rect key="frame" x="155.5" y="41.5" width="39.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="3vx-0L-pbl">
+                    <rect key="frame" x="163" y="8.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="Ffg-Vn-UD6"/>
+                        <constraint firstAttribute="height" constant="25" id="Mgz-E8-8SF"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="61x-Ls-07q" secondAttribute="bottom" constant="8" id="4wr-KH-qtt"/>
+                <constraint firstItem="Jab-x8-78e" firstAttribute="centerX" secondItem="tmj-MM-ytC" secondAttribute="centerX" id="D0r-vd-CAV"/>
+                <constraint firstItem="3vx-0L-pbl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tmj-MM-ytC" secondAttribute="top" constant="8" id="Kux-V1-d2x"/>
+                <constraint firstItem="Jab-x8-78e" firstAttribute="centerY" secondItem="tmj-MM-ytC" secondAttribute="centerY" id="Xge-l9-Ow3"/>
+                <constraint firstItem="Jab-x8-78e" firstAttribute="top" secondItem="3vx-0L-pbl" secondAttribute="bottom" constant="8" id="YVc-he-5hT"/>
+                <constraint firstItem="Jab-x8-78e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tmj-MM-ytC" secondAttribute="leading" constant="20" symbolic="YES" id="Zm5-iZ-zza"/>
+                <constraint firstItem="61x-Ls-07q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jab-x8-78e" secondAttribute="trailing" constant="8" symbolic="YES" id="hSj-Ah-6xo"/>
+                <constraint firstItem="61x-Ls-07q" firstAttribute="trailing" secondItem="tmj-MM-ytC" secondAttribute="trailingMargin" id="iSD-YT-RMh"/>
+                <constraint firstItem="61x-Ls-07q" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tmj-MM-ytC" secondAttribute="top" constant="8" id="lbF-D6-9CK"/>
+                <constraint firstItem="61x-Ls-07q" firstAttribute="centerY" secondItem="tmj-MM-ytC" secondAttribute="centerY" id="mNu-Hh-JO3"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Jab-x8-78e" secondAttribute="bottom" constant="8" id="ucX-ya-NrY"/>
+                <constraint firstItem="3vx-0L-pbl" firstAttribute="centerX" secondItem="Jab-x8-78e" secondAttribute="centerX" id="zdN-nf-7lU"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="actIndicator" destination="61x-Ls-07q" id="prv-Ty-3IM"/>
+                <outlet property="icon" destination="3vx-0L-pbl" id="Rlc-I6-BSJ"/>
+                <outlet property="indicatorLabel" destination="Jab-x8-78e" id="Y70-3J-y0e"/>
+                <outlet property="topSpaceToLabel" destination="YVc-he-5hT" id="Ay9-2B-HzN"/>
+            </connections>
+            <point key="canvasLocation" x="-187.5" y="-161"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icPhoto" width="16" height="16"/>
+    </resources>
+</document>

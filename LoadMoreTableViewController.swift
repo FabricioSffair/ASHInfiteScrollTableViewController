@@ -17,6 +17,8 @@ protocol LoadMoreDelegate {
     
     var loadingMoreTitle: String { get }
     
+    var footerXibName: String { get }
+    
     func fetchDataFromWS(withOffset offset: Int, andLimit limit: Int, completionBlock completion: @escaping ([Any]?, Error?) -> Void)
 }
 
@@ -273,9 +275,8 @@ class LoadMoreTableViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - Footer methods
     func loadFooter() -> LoadFooterView {
-        let footer = UINib(nibName: "LoadFooterView", bundle: nil)
+        let footer = UINib(nibName: self.footerXibName, bundle: nil)
             .instantiate(withOwner: self, options: nil)[0] as! LoadFooterView
-        
         footer.noMoreResultsTitle = self.noResultsTitle
         footer.loadingResultsTitle = self.loadingMoreTitle
         
@@ -366,6 +367,11 @@ extension LoadMoreTableViewController: LoadMoreDelegate {
     var loadingMoreTitle: String {
         return "Carregando..."
     }
+    
+    var footerXibName : String {
+        return "LoadFooterView"
+    }
+    
     
     func fetchDataFromWS(withOffset offset: Int, andLimit limit: Int, completionBlock completion: @escaping ([Any]?, Error?) -> Void) {
         // TODO: create an custom error
