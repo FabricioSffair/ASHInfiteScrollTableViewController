@@ -8,18 +8,44 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: LoadMoreTableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    // MARK: - Models
+    var models = [String]() {
+        didSet {
+            debugPrint("newModels: \(models)")
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - UITableViewDataSource
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = models[indexPath.row]
+        return cell
     }
-
-
 }
 
+// MARK: - LoadMoreDelegate
+extension ViewController {
+    override var records: [Any] {
+        get {
+            return self.models
+        }
+        set {
+            if let models = newValue as? [String] {
+                self.models = models
+            }
+        }
+    }
+    
+    override func fetchDataFromWS(withOffset offset: Int, andLimit limit: Int, completionBlock completion: @escaping ([Any]?, Error?) -> Void) {
+        
+        var strings = [String]()
+        
+        for i in offset ..< (offset+limit) {
+            strings.append("Line \(i)")
+        }
+        
+        completion(strings, nil)
+    }
+}

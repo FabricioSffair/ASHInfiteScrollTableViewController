@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EAFC1C21E8E92C700D865B2 /* LoadFooterViewWithBigImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EAFC1C01E8E92C700D865B2 /* LoadFooterViewWithBigImage.xib */; };
+		0EAFC1C31E8E92C700D865B2 /* LoadFooterViewWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EAFC1C11E8E92C700D865B2 /* LoadFooterViewWithImage.xib */; };
+		0EAFC1C51E8E960C00D865B2 /* TresPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFC1C41E8E960C00D865B2 /* TresPosts.swift */; };
 		0EF946A51E71E95200A3C74A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF946A41E71E95200A3C74A /* AppDelegate.swift */; };
 		0EF946A71E71E95200A3C74A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF946A61E71E95200A3C74A /* ViewController.swift */; };
 		0EF946AA1E71E95200A3C74A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF946A81E71E95200A3C74A /* Main.storyboard */; };
@@ -29,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EAFC1C01E8E92C700D865B2 /* LoadFooterViewWithBigImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadFooterViewWithBigImage.xib; sourceTree = "<group>"; };
+		0EAFC1C11E8E92C700D865B2 /* LoadFooterViewWithImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadFooterViewWithImage.xib; sourceTree = "<group>"; };
+		0EAFC1C41E8E960C00D865B2 /* TresPosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TresPosts.swift; sourceTree = "<group>"; };
 		0EF946A11E71E95200A3C74A /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF946A41E71E95200A3C74A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EF946A61E71E95200A3C74A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 				0EF946AB1E71E95200A3C74A /* Assets.xcassets */,
 				0EF946AD1E71E95200A3C74A /* LaunchScreen.storyboard */,
 				0EF946B01E71E95200A3C74A /* Info.plist */,
+				0EAFC1C41E8E960C00D865B2 /* TresPosts.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -106,6 +113,8 @@
 		0EF946CA1E71E97F00A3C74A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0EAFC1C01E8E92C700D865B2 /* LoadFooterViewWithBigImage.xib */,
+				0EAFC1C11E8E92C700D865B2 /* LoadFooterViewWithImage.xib */,
 				0EF946C41E71E97900A3C74A /* LoadFooterView.swift */,
 				0EF946C51E71E97900A3C74A /* LoadFooterView.xib */,
 				0EF946C61E71E97900A3C74A /* LoadMoreTableViewController.swift */,
@@ -199,8 +208,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EF946AF1E71E95200A3C74A /* LaunchScreen.storyboard in Resources */,
+				0EAFC1C31E8E92C700D865B2 /* LoadFooterViewWithImage.xib in Resources */,
 				0EF946C81E71E97900A3C74A /* LoadFooterView.xib in Resources */,
 				0EF946AC1E71E95200A3C74A /* Assets.xcassets in Resources */,
+				0EAFC1C21E8E92C700D865B2 /* LoadFooterViewWithBigImage.xib in Resources */,
 				0EF946AA1E71E95200A3C74A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +233,7 @@
 				0EF946A71E71E95200A3C74A /* ViewController.swift in Sources */,
 				0EF946A51E71E95200A3C74A /* AppDelegate.swift in Sources */,
 				0EF946C91E71E97900A3C74A /* LoadMoreTableViewController.swift in Sources */,
+				0EAFC1C51E8E960C00D865B2 /* TresPosts.swift in Sources */,
 				0EF946C71E71E97900A3C74A /* LoadFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +440,7 @@
 				0EF946C01E71E95200A3C74A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0EF946C11E71E95200A3C74A /* Build configuration list for PBXNativeTarget "ExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +449,7 @@
 				0EF946C31E71E95200A3C74A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
